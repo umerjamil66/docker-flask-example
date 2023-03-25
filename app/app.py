@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-color = red
+color = os.environ.get('APP_COLOR')
 
 @app.route("/")
 def index():
