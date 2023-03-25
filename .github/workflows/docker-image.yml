@@ -1,8 +1,8 @@
 name: Docker Image CI
 
-on: workflow_dispatch
-#  push:
-#    branches: [ "main" ]
+on: 
+  push:
+    branches: [ "main" ]
 
 
 jobs:
@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    - name: Echo commit hash
+      run: echo ${{ github.sha }}
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag job1:$(date +%s)
 
